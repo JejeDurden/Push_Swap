@@ -6,7 +6,7 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 10:38:56 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/01/24 19:44:46 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/01/25 15:37:11 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,23 @@ INCLUDES = ./includes/
 
 SRC =	ft_push_swap.c						\
 		ft_parser.c							\
+		ft_is_sorted.c						\
+		ft_init_struct.c					\
+		commands.c							\
+		commands2.c							\
+		commands3.c							\
+		moves.c								\
 
 
 SRC2 =	ft_checker.c						\
 		ft_parser.c							\
+		commands.c							\
+		commands2.c							\
+		commands3.c							\
+		ft_exec_command.c					\
+		ft_is_sorted.c						\
+		ft_init_struct.c					\
+		moves.c								\
 
 OBJ = $(SRC:.c=.o)
 OBJ2 = $(SRC:.c=.o)

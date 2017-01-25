@@ -6,12 +6,11 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:49:29 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/24 19:44:51 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/25 10:34:56 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
-}
 
 int		ft_valid_int(char *argv)
 {
@@ -50,31 +49,4 @@ int		ft_valid_num(char *argv, char **tabstr, int n)
 			return (0);
 		return (1);
 	}
-}
-
-int		main(int argc, char **argv)
-{
-	int		*tab;
-	int		i;
-	int		error;
-
-	tab = ft_memalloc(sizeof(int) * (argc - 1));
-	i = 1;
-	error = 0;
-	while (i < argc)
-	{
-		if (ft_valid_num(argv[i], argv, argc) == 1 &&
-									ft_valid_int(argv[i]) == 1)
-			tab[argc - i] = ft_atoi(argv[i]);
-		else
-			error = 1;
-		i++;
-	}
-	if (error == 1 || argc < 2)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (-1);
-	}
-	ft_checker(tab);
-	return (0);
 }
