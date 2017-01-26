@@ -6,7 +6,7 @@
 /*   By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 11:40:04 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/24 14:19:03 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/26 17:12:35 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int					ft_longer_size(int n1, int n2);
 int					ft_smaller_size(int n1, int n2);
 int					ft_puthex_size(unsigned long long int nb);
 int					ft_putoct_size(unsigned long long int nb);
+int					ft_ismin(int *tab, int size);
 
 #endif

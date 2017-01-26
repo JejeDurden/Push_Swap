@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 13:51:21 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/26 19:14:00 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/01/26 13:27:16 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/01/26 13:33:32 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-t_struct	*ft_init_struct(int argc)
+int		main(int argc, char **argv)
 {
-	t_struct	*piles;
+	t_struct *piles;
+	int		i;
 
-	piles = ft_memalloc(sizeof(t_struct));
-	piles->a = ft_memalloc(sizeof(int) * (argc - 1));
-	piles->b = ft_memalloc(sizeof(int) * (argc - 1));
-	piles->sizemax = argc - 1;
-	piles->size_a = argc - 1;
-	piles->size_b = 0;
-	piles->push_swap = 0;
-	piles->error = 0;
-	piles->test = 0;
-	piles->moves = 0;
-	return (piles);
+	i = 1;
+	piles = ft_init_struct(argc);
+	while (i < argc)
+	{
+		piles->a[i - 1] = ft_atoi(argv[i]);
+		i++;
+	}
+	ft_sort_rate(piles);
 }

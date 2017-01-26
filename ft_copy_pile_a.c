@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_copy_piles.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 13:51:21 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/26 19:14:00 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/01/26 19:40:22 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/01/26 19:43:33 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-t_struct	*ft_init_struct(int argc)
+void	ft_copy_pile_a(t_struct *temp, t_struct *piles)
 {
-	t_struct	*piles;
+	int		i;
 
-	piles = ft_memalloc(sizeof(t_struct));
-	piles->a = ft_memalloc(sizeof(int) * (argc - 1));
-	piles->b = ft_memalloc(sizeof(int) * (argc - 1));
-	piles->sizemax = argc - 1;
-	piles->size_a = argc - 1;
-	piles->size_b = 0;
-	piles->push_swap = 0;
-	piles->error = 0;
-	piles->test = 0;
-	piles->moves = 0;
-	return (piles);
+	i = 0;
+	while (i < piles->sizemax)
+	{
+		temp->a[i] = piles->a[i];
+		i++;
+	}
 }

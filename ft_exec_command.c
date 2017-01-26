@@ -6,13 +6,13 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 11:05:38 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/25 14:10:04 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/26 14:51:07 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-void	ft_exec_command(char *line, t_struct *piles)
+int		ft_exec_command(char *line, t_struct *piles)
 {
 	if (ft_strcmp(line, "sa") == 0)
 		ft_sa(piles);
@@ -36,4 +36,7 @@ void	ft_exec_command(char *line, t_struct *piles)
 		ft_rrb(piles);
 	else if (ft_strcmp(line, "rrr") == 0)
 		ft_rrr(piles);
+	else
+		return (0);
+	return (1);
 }

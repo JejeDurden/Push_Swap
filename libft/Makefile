@@ -6,7 +6,7 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 17:35:40 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/01/24 14:19:24 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/01/26 17:23:43 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,7 @@ SRC = ft_putchar.c			\
 	  ft_smaller_size.c		\
 	  ft_puthex_size.c		\
 	  ft_putoct_size.c		\
+	  ft_ismin.c			\
 
 OBJ = $(SRC:.c=.o)
 

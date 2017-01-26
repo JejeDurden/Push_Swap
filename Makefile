@@ -6,7 +6,7 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 10:38:56 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/01/25 15:37:11 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/01/26 19:43:22 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,10 @@ SRC =	ft_push_swap.c						\
 		commands2.c							\
 		commands3.c							\
 		moves.c								\
-
+		ft_sort_rate.c						\
+		ft_insertion.c						\
+		ft_free_piles.c						\
+		ft_copy_pile_a.c					\
 
 SRC2 =	ft_checker.c						\
 		ft_parser.c							\
@@ -38,9 +41,10 @@ SRC2 =	ft_checker.c						\
 		ft_is_sorted.c						\
 		ft_init_struct.c					\
 		moves.c								\
+		ft_free_piles.c						\
 
 OBJ = $(SRC:.c=.o)
-OBJ2 = $(SRC:.c=.o)
+OBJ2 = $(SRC2:.c=.o)
 
 all: $(NAME) $(NAME2)
 
@@ -61,8 +65,8 @@ $(NAME2): $(OBJ2)
 
 clean:
 	@make clean -C ./libft/
-	@echo "Erasing .o files in Filler..."
-	@rm -f $(OBJ)
+	@echo "Erasing .o files in Push_Swap..."
+	@rm -f $(OBJ) $(OBJ2)
 	@echo "Done."
 
 fclean: clean

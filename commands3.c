@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 14:16:54 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/25 18:11:53 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/26 19:18:03 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	ft_rra(t_struct *piles)
 		i--;
 	}
 	piles->a[0] = temp;
-	if (piles->push_swap == 1)
+	if (piles->push_swap == 1 && piles->test == 0)
 		ft_putstr("rra\n");
+	else if (piles->push_swap == 1 && piles->test == 1)
+		piles->moves++;
 }
 
 void	ft_rrb(t_struct *piles)
@@ -42,8 +44,10 @@ void	ft_rrb(t_struct *piles)
 		i--;
 	}
 	piles->b[0] = temp;
-	if (piles->push_swap == 1)
+	if (piles->push_swap == 1 && piles->test == 0)
 		ft_putstr("rrb\n");
+	else if (piles->push_swap == 1 && piles->test == 1)
+		piles->moves++;
 }
 
 void	ft_rrr(t_struct *piles)
@@ -67,6 +71,8 @@ void	ft_rrr(t_struct *piles)
 		i--;
 	}
 	piles->b[0] = temp;
-	if (piles->push_swap == 1)
+	if (piles->push_swap == 1 && piles->test == 0)
 		ft_putstr("rrr\n");
+	else if (piles->push_swap == 1 && piles->test == 1)
+		piles->moves++;
 }

@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_free_piles.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 13:51:21 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/26 19:14:00 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/01/26 19:07:54 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/01/26 19:46:16 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-t_struct	*ft_init_struct(int argc)
+void	ft_free_piles(t_struct **piles)
 {
-	t_struct	*piles;
+	t_struct	*temp;
 
-	piles = ft_memalloc(sizeof(t_struct));
-	piles->a = ft_memalloc(sizeof(int) * (argc - 1));
-	piles->b = ft_memalloc(sizeof(int) * (argc - 1));
-	piles->sizemax = argc - 1;
-	piles->size_a = argc - 1;
-	piles->size_b = 0;
-	piles->push_swap = 0;
-	piles->error = 0;
-	piles->test = 0;
-	piles->moves = 0;
-	return (piles);
+	temp = *piles;
+	free(temp->a);
+	free(temp->b);
 }
