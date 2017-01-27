@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_half_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 13:51:21 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/27 10:07:32 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/01/27 10:00:47 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/01/27 16:19:31 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-t_struct	*ft_init_struct(int argc)
+void	ft_half_sort(t_struct *piles)
 {
-	t_struct	*piles;
+	int		min;
 
-	piles = ft_memalloc(sizeof(t_struct));
-	piles->a = ft_memalloc(sizeof(int) * (argc - 1));
-	piles->b = ft_memalloc(sizeof(int) * (argc - 1));
-	piles->sizemax = argc - 1;
-	piles->size_a = argc - 1;
-	piles->size_b = 0;
-	piles->push_swap = 0;
-	piles->error = 0;
-	piles->test = 0;
-	piles->moves = 0;
-	return (piles);
+	while (ft_is_finished(piles) == 0)
+	{
+		while (ft_is_sorted(piles->a, piles->size_a) == 0)
+		{
+			min = ft_ismin(piles->a, piles->size_a);
+			if (piles->a[0] == min)
+				ft_pb(piles);
+			else if (piles->a[piles->size_a] == min)
+				ft_rra(piles);
+			else
+				ft_ra(piles);
+			if (ft_sort_rate(piles) > 85)
+				ft_insertion(piles);
+		}
+		while (piles->size_b > 0)
+			ft_pa(piles);
+	}
 }

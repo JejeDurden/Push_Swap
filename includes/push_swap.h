@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:54:00 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/26 19:43:06 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/27 16:28:14 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int					ft_valid_int(char *argv);
 void				ft_checker(t_struct *piles);
 void				ft_push_swap(t_struct *piles);
 int					ft_exec_command(char *line, t_struct *piles);
-int					ft_is_sorted(t_struct *piles);
+int					ft_is_finished(t_struct *piles);
 t_struct			*ft_init_struct(int argc);
 void				ft_move_up_a(t_struct *piles);
 void				ft_move_up_b(t_struct *piles);
@@ -52,7 +52,10 @@ void				ft_rrb(t_struct *piles);
 void				ft_rrr(t_struct *piles);
 int					ft_sort_rate(t_struct *piles);
 void				ft_insertion(t_struct *piles);
+void				ft_half_sort(t_struct *piles);
+void				ft_merge_sort(t_struct *piles);
 void				ft_free_piles(t_struct **piles);
 void				ft_copy_pile_a(t_struct *temp, t_struct *piles);
+int					ft_get_first_bug(int *tab);
 
 #endif

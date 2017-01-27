@@ -6,7 +6,7 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 10:38:56 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/01/26 19:43:22 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/01/27 16:24:06 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INCLUDES = ./includes/
 
 SRC =	ft_push_swap.c						\
 		ft_parser.c							\
-		ft_is_sorted.c						\
+		ft_is_finished.c					\
 		ft_init_struct.c					\
 		commands.c							\
 		commands2.c							\
@@ -31,6 +31,8 @@ SRC =	ft_push_swap.c						\
 		ft_insertion.c						\
 		ft_free_piles.c						\
 		ft_copy_pile_a.c					\
+		ft_half_sort.c						\
+		ft_merge_sort.c						\
 
 SRC2 =	ft_checker.c						\
 		ft_parser.c							\
@@ -38,7 +40,7 @@ SRC2 =	ft_checker.c						\
 		commands2.c							\
 		commands3.c							\
 		ft_exec_command.c					\
-		ft_is_sorted.c						\
+		ft_is_finished.c					\
 		ft_init_struct.c					\
 		moves.c								\
 		ft_free_piles.c						\
@@ -72,7 +74,7 @@ clean:
 fclean: clean
 	@make fclean -C ./libft/
 	@echo "Erasing $(NAME)..."
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(NAME2)
 	@echo "Done."
 
 re: fclean all clean

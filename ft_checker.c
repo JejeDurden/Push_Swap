@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 18:31:28 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/26 19:12:16 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/27 10:13:45 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_checker(t_struct *piles)
 	}
 	if (piles->error == 0)
 	{
-		if (ft_is_sorted(piles) == 1)
+		if (ft_is_finished(piles) == 1)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");

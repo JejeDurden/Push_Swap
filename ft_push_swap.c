@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:50:38 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/26 19:47:55 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/27 16:51:50 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,35 @@
 void	ft_push_swap(t_struct *piles)
 {
 	int		insertion;
-	int		merge;
+	int		half_sort;
+//	int		merge_sort;
 	t_struct *temp;
 
-	temp = ft_init_struct(piles->sizemax + 1);
-	ft_copy_pile_a(temp, piles);
 	piles->push_swap = 1;
-	piles->test = 1;
+	temp = ft_init_struct(piles->sizemax + 1);
+	temp->push_swap = 1;
+	temp->test = 1;
+	ft_copy_pile_a(temp, piles);
 	ft_insertion(temp);
-	insertion = piles->moves;
-	piles->moves = 150;
-//	ft_merge(piles);
-	merge = piles->moves;
-	piles->test = 0;
-//	if (insertion > merge)
-//		ft_merge(piles);
+	insertion = temp->moves;
+	temp = ft_init_struct(piles->sizemax + 1);
+	temp->push_swap = 1;
+	temp->test = 1;
+	ft_copy_pile_a(temp, piles);
+	ft_half_sort(temp);
+	half_sort = temp->moves;
+/*	temp = ft_init_struct(piles->sizemax + 1);
+	temp->push_swap = 1;
+	temp->test = 1;
+	ft_copy_pile_a(temp, piles);
+	ft_merge_sort(temp);
+	merge_sort = temp->moves;*/
+//	if (insertion < ft_smaller_size(half_sort, merge_sort))
+//		ft_insertion(piles);
+//	else if (merge_sort < half_sort)
+//		ft_half_sort(piles);
 //	else
-	ft_insertion(piles);
+		ft_merge_sort(piles);
 }
 
 int		main(int argc, char **argv)

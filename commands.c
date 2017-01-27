@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 14:10:15 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/26 19:16:26 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/27 16:14:48 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_pb(t_struct *piles)
 		ft_move_down_a(piles);
 	}
 	if (piles->push_swap == 1 && piles->test == 0)
-		ft_putstr("pa\n");
+		ft_putstr("pb\n");
 	else if (piles->push_swap == 1 && piles->test == 1)
 		piles->moves++;
 }

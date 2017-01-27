@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ismin.c                                         :+:      :+:    :+:   */
+/*   ft_is_finished.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/26 17:09:22 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/27 10:56:33 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/01/25 13:44:06 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/01/27 10:13:11 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/push_swap.h"
 
-int		ft_ismin(int *tab, int size)
+int		ft_is_finished(t_struct *piles)
 {
-	int		min;
 	int		i;
 
 	i = 0;
-	min = tab[0];
-	while (i < size)
+	if (piles->b[0] == 0 && piles->size_b == 0)
 	{
-		if (tab[i] < min)
-			min = tab[i];
-		i++;
+		while (i + 1 < piles->sizemax)
+		{
+			if (piles->a[i] >= piles->a[i + 1])
+				return (0);
+			i++;
+		}
+		return (1);
 	}
-	return (min);
+	else
+		return (0);
 }
