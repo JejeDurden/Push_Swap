@@ -6,20 +6,29 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 15:36:46 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/27 16:25:45 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/27 17:32:50 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-int		ft_get_first_bug(int *tab)
+int		ft_get_first_bug(int *tab, int size)
 {
 	int		i;
+	int		bug;
 
 	i = 1;
-	while (tab[i] > tab[i - 1])
+	bug = 0;
+	while (i < size)
+	{
+		if (tab[i] < tab[i - 1])
+		{
+			bug = i;
+			break ;
+		}
 		i++;
-	return (i);
+	}
+	return (bug);
 }
 
 void	ft_insertion(t_struct *piles)
@@ -31,7 +40,7 @@ void	ft_insertion(t_struct *piles)
 	max = ft_ismax(piles->a, piles->size_a);
 	while (ft_is_sorted(piles->a, piles->size_a) == 0)
 	{
-		first_bug = ft_get_first_bug(piles->a);
+		first_bug = ft_get_first_bug(piles->a, piles->size_a);
 		if (first_bug > piles->size_a / 2)
 		{
 			i = piles->size_a - first_bug;
