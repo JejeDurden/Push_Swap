@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:50:38 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/27 20:20:19 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/28 20:36:36 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_push_swap(t_struct *piles)
 	temp->push_swap = 1;
 	temp->test = 1;
 	ft_copy_pile_a(temp, piles);
-	ft_half_sort(temp);
+	ft_half_sort(temp, 0);
 	half_sort = temp->moves;
 	temp = ft_init_struct(piles->sizemax + 1);
 	temp->push_swap = 1;
@@ -39,11 +39,13 @@ void	ft_push_swap(t_struct *piles)
 	ft_merge_sort(temp);
 	merge_sort = temp->moves;*/
 //	if (insertion < ft_smaller_size(half_sort, merge_sort))
-//		ft_insertion(piles);
+///		ft_insertion(piles);
 //	else if (merge_sort < half_sort)
 //		ft_half_sort(piles);
+	ft_full_tab_sort(piles);
+//	ft_yolo(piles);
 //	else
-		ft_merge_sort(piles);
+//		ft_merge_sort(piles);
 }
 
 int		main(int argc, char **argv)

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_half_sort.c                                     :+:      :+:    :+:   */
+/*   ft_middle_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 10:00:47 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/28 20:36:50 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/01/28 20:25:27 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/01/28 20:36:41 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-int		ft_find_min_pos(int *tab, int min)
+static int		ft_get_med_pos(int *tab, int size)
 {
 	int		i;
 
 	i = 0;
-	while (tab[i] != min)
+	while (i < size / 2)
+	{
+		
 		i++;
+	}
 	return (i);
 }
 
