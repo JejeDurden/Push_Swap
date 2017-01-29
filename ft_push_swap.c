@@ -6,46 +6,85 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:50:38 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/28 20:36:36 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/29 17:40:57 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
+static t_struct		*ft_init_temp(t_struct *piles, t_struct *temp)
+{
+	temp = ft_init_struct(piles->sizemax + 1);
+	temp->push_swap = 1;
+	temp->test = 1;
+	ft_copy_pile_a(temp, piles);
+	return (temp);
+}
+
+int		ft_minimum(t_algos *algos)
+{
+	int		val;
+
+	val = algos->insertion;
+	if (val > algos->half_sort)
+		val = algos->half_sort;
+	if (val > algos->middle_sort)
+		val = algos->middle_sort;
+	if (val > algos->full_tab_sort)
+		val = algos->full_tab_sort;
+	if (val > algos->yolo_sort)
+		val = algos->yolo_sort;
+	return (val);
+}
+
 void	ft_push_swap(t_struct *piles)
 {
-//	int		insertion;
-//	int		half_sort;
-//	int		merge_sort;
-//	t_struct *temp;
+	t_algos		*algos;
+	t_struct	 *temp;
 
+	algos = ft_memalloc(sizeof(t_algos));
+	temp = ft_init_struct(piles->sizemax + 1);
 	piles->push_swap = 1;
-/*	temp = ft_init_struct(piles->sizemax + 1);
-	temp->push_swap = 1;
-	temp->test = 1;
-	ft_copy_pile_a(temp, piles);
+	temp = ft_init_temp(piles, temp);
+	ft_full_tab_sort(temp);
+	algos->full_tab_sort = temp->moves;
+	temp = ft_init_temp(piles, temp);
+	ft_half_sort(temp);
+	algos->half_sort = temp->moves;
+	temp = ft_init_temp(piles, temp);
+	ft_yolo(temp);
+	algos->yolo_sort = temp->moves;
+	temp = ft_init_temp(piles, temp);
+	ft_middle_sort(temp);
+	algos->middle_sort = temp->moves;
+	temp = ft_init_temp(piles, temp);
 	ft_insertion(temp);
-	insertion = temp->moves;
-	temp = ft_init_struct(piles->sizemax + 1);
-	temp->push_swap = 1;
-	temp->test = 1;
-	ft_copy_pile_a(temp, piles);
-	ft_half_sort(temp, 0);
-	half_sort = temp->moves;
-	temp = ft_init_struct(piles->sizemax + 1);
-	temp->push_swap = 1;
-	temp->test = 1;
-	ft_copy_pile_a(temp, piles);
-	ft_merge_sort(temp);
-	merge_sort = temp->moves;*/
-//	if (insertion < ft_smaller_size(half_sort, merge_sort))
-///		ft_insertion(piles);
-//	else if (merge_sort < half_sort)
-//		ft_half_sort(piles);
-	ft_full_tab_sort(piles);
-//	ft_yolo(piles);
-//	else
-//		ft_merge_sort(piles);
+	algos->insertion = temp->moves;
+	if (ft_minimum(algos) == algos->insertion)
+	{
+		ft_insertion(piles);
+		ft_putstr("insertion\n");
+	}
+	else if (ft_minimum(algos) == algos->half_sort)
+	{
+		ft_half_sort(piles);
+		ft_putstr("half_sort\n");
+	}
+	else if (ft_minimum(algos) == algos->full_tab_sort)
+	{
+		ft_full_tab_sort(piles);
+		ft_putstr("full_tab_sort\n");
+	}
+	else if (ft_minimum(algos) == algos->yolo_sort)
+	{
+		ft_yolo(piles);
+		ft_putstr("yolo_sort\n");
+	}
+	else
+	{
+		ft_middle_sort(piles);
+		ft_putstr("middle_sort\n");
+	}
 }
 
 int		main(int argc, char **argv)

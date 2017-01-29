@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 18:31:28 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/27 10:13:45 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/29 16:22:54 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		main(int argc, char **argv)
 	piles = ft_init_struct(argc);
 	i = 1;
 	piles->error = 0;
+	if (argc < 2)
+		return (0);
 	while (i < argc)
 	{
 		if (ft_valid_num(argv[i], argv, argc) == 1 &&

@@ -6,20 +6,23 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 10:00:47 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/28 20:36:50 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/29 16:02:41 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-int		ft_find_min_pos(int *tab, int min)
+int		ft_find_num_pos(int *tab, int num, int size)
 {
 	int		i;
 
 	i = 0;
-	while (tab[i] != min)
+	while (tab[i] != num && i <= size)
 		i++;
-	return (i);
+	if (i < size)
+		return (i);
+	else
+		return (-1);
 }
 
 void	ft_half_sort(t_struct *piles)
@@ -35,7 +38,7 @@ void	ft_half_sort(t_struct *piles)
 				ft_pb(piles);
 			else if (piles->a[piles->size_a] == min)
 				ft_rra(piles);
-			else if (ft_find_min_pos(piles->a, min) > piles->size_a / 2)
+			else if (ft_find_num_pos(piles->a, min, piles->size_a) > piles->size_a / 2)
 				ft_rra(piles);
 			else if (piles->a[0] - 1 == piles->a[0])
 				ft_sa(piles);
