@@ -6,7 +6,7 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 10:38:56 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/01/29 11:39:08 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/01/30 10:25:04 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC =	ft_push_swap.c						\
 		ft_sort_rate.c						\
 		ft_insertion.c						\
 		ft_free_piles.c						\
+		ft_card_sort.c						\
 		ft_copy_pile_a.c					\
 		ft_half_sort.c						\
 		ft_full_tab_sort.c					\

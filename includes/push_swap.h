@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:54:00 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/29 17:05:33 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/30 14:56:14 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct		s_algos
 	int		insertion;
 	int		middle_sort;
 	int		full_tab_sort;
-	int		yolo_sort;
+	int		card_sort;
 }					t_algos;
 
 int					ft_valid_num(char *argv, char **tabstr, int n);
@@ -66,6 +66,7 @@ void				ft_full_tab_sort(t_struct *piles);
 void				ft_merge_sort(t_struct *piles);
 void				ft_yolo(t_struct *piles);
 void				ft_middle_sort(t_struct *piles);
+void				ft_card_sort(t_struct *piles);
 void				ft_free_piles(t_struct **piles);
 int					ft_find_num_pos(int *tab, int num, int size);
 void				ft_copy_pile_a(t_struct *temp, t_struct *piles);

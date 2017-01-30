@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:25:27 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/29 17:36:12 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/30 16:05:54 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ static void		ft_find_and_push(t_struct *piles, t_struct *temp)
 	int			first_down_pos;
 	int			first_up_pos;
 
-	first_down_pos = 1;
-	first_up_pos = 1;
+	first_down_pos = 2;
+	first_up_pos = 3;
 	while (piles->size_b > 0)
 	{
 		first_down = temp->a[(temp->size_a - 1) / 2 - first_down_pos];
@@ -111,16 +111,25 @@ static void		ft_sort_temp(int *tab, int size)
 void	ft_middle_sort(t_struct *piles)
 {
 	int			med;
-	int			med_pos;
+	int			up;
+	int			up2;
+	int			down;
 	t_struct	*temp;
 
 	temp = ft_init_struct(piles->sizemax + 1);
 	ft_copy_pile_a(temp, piles);
 	ft_sort_temp(temp->a, temp->size_a);
 	med = temp->a[(temp->size_a - 1) / 2];
-	while (piles->size_a > 0)
-		ft_pb(piles);
-	med_pos = ft_find_num_pos(piles->b, med, piles->size_b);
-	ft_push_nb(piles, med, med_pos);
+	up = temp->a[(temp->size_a - 1) / 2 + 1];
+	down = temp->a[(temp->size_a - 1) / 2 - 1];
+	up2 = temp->a[(temp->size_a - 1) / 2 + 2];
+	while (piles->size_a > 4)
+	{
+		if (piles->a[0] != med && piles->a[0] != down && piles->a[0] != up && piles->a[0] != up2)
+			ft_pb(piles);
+		else
+			ft_ra(piles);
+	}
+	ft_insertion(piles);
 	ft_find_and_push(piles, temp);
 }
