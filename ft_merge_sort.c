@@ -6,62 +6,13 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:26:32 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/30 21:08:56 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/01 15:58:43 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-static void		ft_odd_b(t_struct *piles)
-{
-	if (piles->b[0] < piles->a[0])
-	{
-		ft_rb(piles);
-		ft_pb(piles);
-		ft_rb(piles);
-		ft_pb(piles);
-	}
-	else if (piles->b[0] < piles->a[1])
-	{
-		ft_pb(piles);
-		ft_rb(piles);
-		ft_rb(piles);
-		ft_pb(piles);
-	}
-	else
-	{
-		ft_pb(piles);
-		ft_rb(piles);
-		ft_pb(piles);
-		ft_rb(piles);
-	}
-	ft_rb(piles);
-}
-
-static void		ft_odd_a(t_struct *piles)
-{
-	if (piles->a[0] < piles->b[0])
-	{
-		ft_pb(piles);
-		ft_rb(piles);
-		ft_rb(piles);
-	}
-	else if (piles->a[0] < piles->b[1])
-	{
-		ft_rb(piles);
-		ft_pa(piles);
-		ft_rb(piles);
-	}
-	else
-	{
-		ft_rb(piles);
-		ft_rb(piles);
-		ft_pa(piles);
-	}
-	ft_rb(piles);
-}
-
-static void		ft_sort_by_two(t_struct *piles)
+void		ft_sort_by_two(t_struct *piles)
 {
 	int		last;
 
@@ -80,76 +31,59 @@ static void		ft_sort_by_two(t_struct *piles)
 			ft_rr(piles);
 		}
 	}
-	if (piles->size_a % 2 != 0)
+	if (piles->size_b % 2 != 0 && piles->size_a % 2 != 0)
+		ft_both_odd(piles);
+	else if (piles->size_a % 2 != 0)
 		ft_odd_a(piles);
 	else if (piles->size_b % 2 != 0)
 		ft_odd_b(piles);
+	else
+		ft_both_even(piles);
 }
 
-static void		ft_push_it_babe(t_struct *piles, int flag, int n)
+static void		ft_push_to_a(t_struct *piles, int n)
 {
-	int		min;
 	int		temp;
 	int		temp2;
 
-	temp = n;
+	temp = 0;
 	temp2 = 0;
-	if (flag % 2 == 1)
+	while (temp < n)
 	{
-		while (temp > 0)
-		{
-			min = ft_ismin(piles->a, piles->size_a);
-			if (piles->a[0] < piles->b[0] && temp2 < n)
-			{
-				ft_ra(piles);
-				temp++;
-			}
-			else if (piles->b[0] < min)
-			{
-				ft_pa(piles);
-				temp--;
-			}
-			else
-			{
-				ft_pa(piles);
-				temp--;
-			}
-		}
-		n *= 2;
-		while (n > 0)
-		{
+		if (piles->a[0] < piles->b[0] && temp2++ < n)
 			ft_ra(piles);
-			n--;
+		else
+		{
+			ft_pa(piles);
+			ft_ra(piles);
+			temp++;
 		}
 	}
-	else
+	n = n * 2 - temp2 - temp;
+	while (n-- > 0)
+		ft_ra(piles);
+}
+static void		ft_push_to_b(t_struct *piles, int n)
+{
+	int		temp;
+	int		temp2;
+
+	temp = 0;
+	temp2 = 0;
+	while (temp < n)
 	{
-		while (temp > 0)
-		{
-			min = ft_ismin(piles->b, piles->size_b);
-			if (piles->b[0] < piles->a[0] && temp2 < n)
-			{
-				ft_rb(piles);
-				temp2++;
-			}
-			else if (piles->a[0] < min)
-			{
-				ft_pb(piles);
-				temp--;
-			}
-			else
-			{
-				ft_pb(piles);
-				temp--;
-			}
-		}
-		n *= 2;
-		while (n > 0)
-		{
+		if (piles->b[0] < piles->a[0] && temp2++ < n)
 			ft_rb(piles);
-			n--;
+		else
+		{
+			ft_pb(piles);
+			ft_rb(piles);
+			temp++;
 		}
 	}
+	n = n * 2 - temp2 - temp;
+	while (n-- > 0)
+		ft_rb(piles);
 }
 
 
@@ -159,16 +93,16 @@ static void		ft_mergeation(t_struct *piles, int n)
 	int		last;
 	int		flag;
 	int		turn;
-	int		i;
+//	int		i;
 
 	flag = (piles->size_a >= piles->size_b) ? 2 : 3;
-	turn = (piles->size_a >= piles->size_b) ? piles->size_b / n :
+	turn = (piles->size_a <= piles->size_b) ? piles->size_b / n :
 		piles->size_a / n;
-	while (turn > 0)
+	while (turn > 0 && (ft_is_sorted(piles->a, piles->size_a) == 0 ||
+				ft_is_sorted(piles->b, piles->size_b) == 0))
 	{
 		last = piles->b[n];
-			sleep(1);
-			i = 0;
+/*			i = 0;
 			while (i < piles->size_a)
 			{
 				printf("%d ", piles->a[i]);
@@ -176,6 +110,7 @@ static void		ft_mergeation(t_struct *piles, int n)
 			}
 			printf("\n");
 			i = 0;
+			sleep(1);
 			while (i < piles->size_b)
 			{
 				printf("%d ", piles->b[i]);
@@ -185,8 +120,11 @@ static void		ft_mergeation(t_struct *piles, int n)
 			printf("n =  %d", n);
 			printf("\n");
 			printf("last %d", last);
-			printf("\n");
-			ft_push_it_babe(piles, flag, n);
+			printf("\n");*/
+		if (flag % 2 == 1)
+			ft_push_to_a(piles, n);
+		else
+			ft_push_to_b(piles, n);
 		flag++;
 		turn--;
 	}
@@ -194,28 +132,52 @@ static void		ft_mergeation(t_struct *piles, int n)
 
 void			ft_merge_sort(t_struct *piles)
 {
-	int		min_a;
 	int		n;
+	int		i;
 
-	while (piles->size_a > piles->sizemax / 2)
-		ft_pb(piles);
-	ft_sort_by_two(piles);
-	n = 4;
-	while (n <= piles->sizemax / 2)
+	if (piles->size_a > 4)
 	{
-		ft_mergeation(piles, n);
-		n *= 2;
+		while (piles->size_a > piles->sizemax / 2)
+			ft_pb(piles);
+		ft_sort_by_two(piles);
+/*			i = 0;
+			while (i < piles->size_a)
+			{
+				printf("%d ", piles->a[i]);
+				i++;
+			}
+			printf("\n");
+			sleep(1);
+			i = 0;
+			while (i < piles->size_b)
+			{
+				printf("%d ", piles->b[i]);
+				i++;
+			}
+			printf("\n");
+			printf("oui oui\n");*/
+		n = 2;
+		while (n <= piles->sizemax / 2
+				&& (ft_is_sorted(piles->a, piles->size_a) == 0 ||
+					ft_is_sorted(piles->b, piles->size_b) == 0))
+		{
+			i = 0;
+			while (i < piles->size_b % n && n != 2)
+			{
+				ft_rb(piles);
+				i++;
+			}
+			i = 0;
+			while (i < piles->size_a % n && n != 2)
+			{
+				ft_ra(piles);
+				i++;
+			}
+			ft_mergeation(piles, n);
+			n *= 2;
+		}
+		ft_card_sort(piles);
 	}
-	while (piles->size_b > 0)
-	{
-		min_a = ft_ismin(piles->a, piles->size_a);
-		if (piles->a[0] < piles->b[0])
-			ft_ra(piles);
-		else if (piles->b[0] < min_a)
-			ft_pa(piles);
-		else
-			ft_pa(piles);
-	}
-	while (ft_is_finished(piles) == 0)
-		ft_ra(piles);
+	else
+		piles->moves = 70;
 }

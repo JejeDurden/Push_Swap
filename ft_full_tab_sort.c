@@ -6,21 +6,11 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 18:32:48 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/29 16:02:47 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/01 15:39:03 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
-
-static int		ft_find_max_pos(int *tab, int max)
-{
-	int		i;
-
-	i = 0;
-	while (tab[i] != max)
-		i++;
-	return (i);
-}
 
 void	ft_full_tab_sort(t_struct *piles)
 {
@@ -36,9 +26,10 @@ void	ft_full_tab_sort(t_struct *piles)
 		max = ft_ismax(piles->b, piles->size_b);
 		if (piles->b[0] == max)
 			ft_pa(piles);
-		else if (piles->b[piles->size_b] == max)
+		else if (piles->b[piles->size_b - 1] == max)
 			ft_rrb(piles);
-		else if (ft_find_max_pos(piles->b, max) > piles->size_b / 2)
+		else if (ft_find_num_pos(piles->b, max, piles->size_b) >
+				piles->size_b / 2)
 			ft_rrb(piles);
 		else
 			ft_rb(piles);

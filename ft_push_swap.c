@@ -6,12 +6,12 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:50:38 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/30 20:15:53 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/01 16:31:09 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
-/*
+
 static t_struct		*ft_init_temp(t_struct *piles, t_struct *temp)
 {
 	temp = ft_init_struct(piles->sizemax + 1);
@@ -20,73 +20,42 @@ static t_struct		*ft_init_temp(t_struct *piles, t_struct *temp)
 	ft_copy_pile_a(temp, piles);
 	return (temp);
 }
-*/
-int		ft_minimum(t_algos *algos)
+
+static int			ft_minimum(t_algos *algos)
 {
 	int		val;
 
 	val = algos->insertion;
-	if (val > algos->half_sort)
-		val = algos->half_sort;
 	if (val > algos->middle_sort)
 		val = algos->middle_sort;
-	if (val > algos->full_tab_sort)
-		val = algos->full_tab_sort;
-	if (val > algos->card_sort)
-		val = algos->card_sort;
+	if (val > algos->merge_sort)
+		val = algos->merge_sort;
 	return (val);
 }
 
 void	ft_push_swap(t_struct *piles)
 {
-//	t_algos		*algos;
-//	t_struct	 *temp;
+	t_algos		*algos;
+	t_struct	 *temp;
 
-//	algos = ft_memalloc(sizeof(t_algos));
-//	temp = ft_init_struct(piles->sizemax + 1);
 	piles->push_swap = 1;
-/*	temp = ft_init_temp(piles, temp);
-	ft_full_tab_sort(temp);
-	algos->full_tab_sort = temp->moves;
+	algos = ft_memalloc(sizeof(t_algos));
+	temp = ft_init_struct(piles->sizemax + 1);
 	temp = ft_init_temp(piles, temp);
-	ft_half_sort(temp);
-	algos->half_sort = temp->moves;
-	temp = ft_init_temp(piles, temp);
-	ft_card_sort(temp);
-	algos->card_sort = temp->moves;
+	ft_merge_sort(temp);
+	algos->merge_sort = temp->moves;
 	temp = ft_init_temp(piles, temp);
 	ft_middle_sort(temp);
 	algos->middle_sort = temp->moves;
-	algos->middle_sort = 50;
 	temp = ft_init_temp(piles, temp);
 	ft_insertion(temp);
 	algos->insertion = temp->moves;
 	if (ft_minimum(algos) == algos->insertion)
-	{
 		ft_insertion(piles);
-		ft_putstr("insertion\n");
-	}
-	else if (ft_minimum(algos) == algos->half_sort)
-	{
-		ft_half_sort(piles);
-		ft_putstr("half_sort\n");
-	}
-	else if (ft_minimum(algos) == algos->full_tab_sort)
-	{
-		ft_full_tab_sort(piles);
-		ft_putstr("full_tab_sort\n");
-	}
-	else if (ft_minimum(algos) == algos->card_sort)
-	{
-		ft_card_sort(piles);
-		ft_putstr("card_sort\n");
-	}
+	else if (ft_minimum(algos) == algos->merge_sort)
+		ft_merge_sort(piles);
 	else
-	{
 		ft_middle_sort(piles);
-		ft_putstr("middle_sort\n");
-	}*/
-	ft_merge_sort(piles);
 }
 
 int		main(int argc, char **argv)
