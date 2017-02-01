@@ -6,7 +6,7 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 10:38:56 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/02/01 13:17:17 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/02/01 19:52:29 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,11 @@ SRC =	ft_push_swap.c						\
 		ft_free_piles.c						\
 		ft_card_sort.c						\
 		ft_copy_pile_a.c					\
-		ft_half_sort.c						\
+		ft_find_num_pos.c					\
 		ft_full_tab_sort.c					\
 		ft_merge_sort.c						\
-		ft_yolo.c							\
 		ft_middle_sort.c					\
+		ft_median_sort.c					\
 		odd_even.c							\
 
 SRC2 =	ft_checker.c						\

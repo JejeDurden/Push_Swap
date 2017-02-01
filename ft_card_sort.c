@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 10:25:16 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 16:16:41 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/01 17:10:55 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int		ft_find_closest_upper(t_struct *piles, int nb)
 	}
 	return (closest);
 }
+
 void			ft_card_sort(t_struct *piles)
 {
 	int		closest;

@@ -6,12 +6,12 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:50:38 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 16:31:09 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/01 19:52:46 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
-
+/*
 static t_struct		*ft_init_temp(t_struct *piles, t_struct *temp)
 {
 	temp = ft_init_struct(piles->sizemax + 1);
@@ -32,16 +32,16 @@ static int			ft_minimum(t_algos *algos)
 		val = algos->merge_sort;
 	return (val);
 }
-
-void	ft_push_swap(t_struct *piles)
+*/
+void				ft_push_swap(t_struct *piles)
 {
 	t_algos		*algos;
-	t_struct	 *temp;
+	t_struct	*temp;
 
 	piles->push_swap = 1;
 	algos = ft_memalloc(sizeof(t_algos));
 	temp = ft_init_struct(piles->sizemax + 1);
-	temp = ft_init_temp(piles, temp);
+/*	temp = ft_init_temp(piles, temp);
 	ft_merge_sort(temp);
 	algos->merge_sort = temp->moves;
 	temp = ft_init_temp(piles, temp);
@@ -54,11 +54,13 @@ void	ft_push_swap(t_struct *piles)
 		ft_insertion(piles);
 	else if (ft_minimum(algos) == algos->merge_sort)
 		ft_merge_sort(piles);
-	else
-		ft_middle_sort(piles);
+	else*/
+		ft_median_sort(piles);
+	ft_free_piles(&temp);
+	free(algos);
 }
 
-int		main(int argc, char **argv)
+int					main(int argc, char **argv)
 {
 	int			i;
 	t_struct	*piles;

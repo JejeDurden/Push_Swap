@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_middle_sort.c                                   :+:      :+:    :+:   */
+/*   ft_median_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:25:27 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 19:42:36 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/01 20:03:41 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,10 @@ static void		ft_sort_temp(int *tab, int size)
 	}
 }
 
-void			ft_middle_sort(t_struct *piles)
+void			ft_median_sort(t_struct *piles)
 {
 	int			med;
 	int			up;
-	int			up2;
 	int			down;
 	t_struct	*temp;
 
@@ -118,17 +117,30 @@ void			ft_middle_sort(t_struct *piles)
 		med = temp->a[(temp->size_a - 1) / 2];
 		up = temp->a[(temp->size_a - 1) / 2 + 1];
 		down = temp->a[(temp->size_a - 1) / 2 - 1];
-		up2 = temp->a[(temp->size_a - 1) / 2 + 2];
-		while (piles->size_a > 4)
+		while (piles->size_a > (piles->sizemax / 2) + 3)
 		{
-			if (piles->a[0] != med && piles->a[0] != down
-					&& piles->a[0] != up && piles->a[0] != up2)
+			if (piles->a[0] != med && (piles->a[0] < temp->a[(temp->size_a - 1) / 4]
+						|| piles->a[0] > temp->a[(temp->size_a - 1) / 4] * 3))
+			{
 				ft_pb(piles);
+				if (piles->a[0] > med)
+					ft_rb(piles);
+			}
 			else
 				ft_ra(piles);
 		}
-		ft_insertion(piles);
-		ft_find_push(piles, temp, 3);
+		while (piles->size_a > 3)
+		{
+			if (piles->a[0] < down || piles->a[0] > up)
+			{
+				ft_pb(piles);
+				if (piles->a[0] > med)
+					ft_rb(piles);
+			}
+			else
+				ft_ra(piles);
+		}
+		ft_find_push(piles, temp, 2);
 	}
 	else
 		piles->moves = 70;

@@ -6,13 +6,13 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:26:32 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 15:58:43 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/01 19:15:15 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-void		ft_sort_by_two(t_struct *piles)
+void			ft_sort_by_two(t_struct *piles)
 {
 	int		last;
 
@@ -63,6 +63,7 @@ static void		ft_push_to_a(t_struct *piles, int n)
 	while (n-- > 0)
 		ft_ra(piles);
 }
+
 static void		ft_push_to_b(t_struct *piles, int n)
 {
 	int		temp;
@@ -86,22 +87,18 @@ static void		ft_push_to_b(t_struct *piles, int n)
 		ft_rb(piles);
 }
 
-
-
 static void		ft_mergeation(t_struct *piles, int n)
 {
-	int		last;
 	int		flag;
 	int		turn;
 //	int		i;
 
 	flag = (piles->size_a >= piles->size_b) ? 2 : 3;
-	turn = (piles->size_a <= piles->size_b) ? piles->size_b / n :
+	turn = (piles->size_a <= piles->size_b) ? piles->size_b / n:
 		piles->size_a / n;
 	while (turn > 0 && (ft_is_sorted(piles->a, piles->size_a) == 0 ||
 				ft_is_sorted(piles->b, piles->size_b) == 0))
 	{
-		last = piles->b[n];
 /*			i = 0;
 			while (i < piles->size_a)
 			{
@@ -140,22 +137,6 @@ void			ft_merge_sort(t_struct *piles)
 		while (piles->size_a > piles->sizemax / 2)
 			ft_pb(piles);
 		ft_sort_by_two(piles);
-/*			i = 0;
-			while (i < piles->size_a)
-			{
-				printf("%d ", piles->a[i]);
-				i++;
-			}
-			printf("\n");
-			sleep(1);
-			i = 0;
-			while (i < piles->size_b)
-			{
-				printf("%d ", piles->b[i]);
-				i++;
-			}
-			printf("\n");
-			printf("oui oui\n");*/
 		n = 2;
 		while (n <= piles->sizemax / 2
 				&& (ft_is_sorted(piles->a, piles->size_a) == 0 ||
@@ -176,7 +157,22 @@ void			ft_merge_sort(t_struct *piles)
 			ft_mergeation(piles, n);
 			n *= 2;
 		}
-		ft_card_sort(piles);
+		i = 0;
+		while (i < piles->size_a)
+		{
+			printf("%d ", piles->a[i]);
+			i++;
+		}
+		printf("\n");
+		sleep(1);
+		i = 0;
+		while (i < piles->size_b)
+		{
+			printf("%d ", piles->b[i]);
+			i++;
+		}
+		printf("\n");
+//		ft_card_sort(piles);
 	}
 	else
 		piles->moves = 70;

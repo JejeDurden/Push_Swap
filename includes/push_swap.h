@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:54:00 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 15:36:59 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/01 19:52:42 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,11 @@ void				ft_rr(t_struct *piles);
 void				ft_rra(t_struct *piles);
 void				ft_rrb(t_struct *piles);
 void				ft_rrr(t_struct *piles);
-int					ft_sort_rate(t_struct *piles);
 void				ft_insertion(t_struct *piles);
-void				ft_half_sort(t_struct *piles);
 void				ft_full_tab_sort(t_struct *piles);
 void				ft_merge_sort(t_struct *piles);
-void				ft_yolo(t_struct *piles);
 void				ft_middle_sort(t_struct *piles);
+void				ft_median_sort(t_struct *piles);
 void				ft_card_sort(t_struct *piles);
 void				ft_free_piles(t_struct **piles);
 int					ft_find_num_pos(int *tab, int num, int size);
