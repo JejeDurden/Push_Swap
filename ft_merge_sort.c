@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:26:32 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 19:15:15 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 08:56:30 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,33 +91,13 @@ static void		ft_mergeation(t_struct *piles, int n)
 {
 	int		flag;
 	int		turn;
-//	int		i;
 
 	flag = (piles->size_a >= piles->size_b) ? 2 : 3;
-	turn = (piles->size_a <= piles->size_b) ? piles->size_b / n:
+	turn = (piles->size_a <= piles->size_b) ? piles->size_b / n :
 		piles->size_a / n;
 	while (turn > 0 && (ft_is_sorted(piles->a, piles->size_a) == 0 ||
 				ft_is_sorted(piles->b, piles->size_b) == 0))
 	{
-/*			i = 0;
-			while (i < piles->size_a)
-			{
-				printf("%d ", piles->a[i]);
-				i++;
-			}
-			printf("\n");
-			i = 0;
-			sleep(1);
-			while (i < piles->size_b)
-			{
-				printf("%d ", piles->b[i]);
-				i++;
-			}
-			printf("\n");
-			printf("n =  %d", n);
-			printf("\n");
-			printf("last %d", last);
-			printf("\n");*/
 		if (flag % 2 == 1)
 			ft_push_to_a(piles, n);
 		else
@@ -138,41 +118,19 @@ void			ft_merge_sort(t_struct *piles)
 			ft_pb(piles);
 		ft_sort_by_two(piles);
 		n = 2;
-		while (n <= piles->sizemax / 2
-				&& (ft_is_sorted(piles->a, piles->size_a) == 0 ||
-					ft_is_sorted(piles->b, piles->size_b) == 0))
+		while (n <= piles->sizemax / 2 && (ft_is_sorted(piles->a, piles->size_a)
+					== 0 || ft_is_sorted(piles->b, piles->size_b) == 0))
 		{
 			i = 0;
-			while (i < piles->size_b % n && n != 2)
-			{
+			while (i++ < piles->size_b % n && n != 2)
 				ft_rb(piles);
-				i++;
-			}
 			i = 0;
-			while (i < piles->size_a % n && n != 2)
-			{
+			while (i++ < piles->size_a % n && n != 2)
 				ft_ra(piles);
-				i++;
-			}
 			ft_mergeation(piles, n);
 			n *= 2;
 		}
-		i = 0;
-		while (i < piles->size_a)
-		{
-			printf("%d ", piles->a[i]);
-			i++;
-		}
-		printf("\n");
-		sleep(1);
-		i = 0;
-		while (i < piles->size_b)
-		{
-			printf("%d ", piles->b[i]);
-			i++;
-		}
-		printf("\n");
-//		ft_card_sort(piles);
+		ft_card_sort(piles);
 	}
 	else
 		piles->moves = 70;

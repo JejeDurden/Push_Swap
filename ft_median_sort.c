@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:25:27 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 20:03:41 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 09:12:28 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,44 +104,23 @@ static void		ft_sort_temp(int *tab, int size)
 
 void			ft_median_sort(t_struct *piles)
 {
-	int			med;
-	int			up;
-	int			down;
 	t_struct	*temp;
+	t_num		*nums;
 
-	if (piles->size_a > 3)
+	if (piles->size_a > 3 && piles->size_a < 120)
 	{
+		nums = ft_memalloc(sizeof(t_num));
 		temp = ft_init_struct(piles->sizemax + 1);
 		ft_copy_pile_a(temp, piles);
 		ft_sort_temp(temp->a, temp->size_a);
-		med = temp->a[(temp->size_a - 1) / 2];
-		up = temp->a[(temp->size_a - 1) / 2 + 1];
-		down = temp->a[(temp->size_a - 1) / 2 - 1];
-		while (piles->size_a > (piles->sizemax / 2) + 3)
-		{
-			if (piles->a[0] != med && (piles->a[0] < temp->a[(temp->size_a - 1) / 4]
-						|| piles->a[0] > temp->a[(temp->size_a - 1) / 4] * 3))
-			{
-				ft_pb(piles);
-				if (piles->a[0] > med)
-					ft_rb(piles);
-			}
-			else
-				ft_ra(piles);
-		}
-		while (piles->size_a > 3)
-		{
-			if (piles->a[0] < down || piles->a[0] > up)
-			{
-				ft_pb(piles);
-				if (piles->a[0] > med)
-					ft_rb(piles);
-			}
-			else
-				ft_ra(piles);
-		}
+		nums->med = temp->a[(temp->size_a - 1) / 2];
+		nums->up = temp->a[(temp->size_a - 1) / 2 + 1];
+		nums->down = temp->a[(temp->size_a - 1) / 2 - 1];
+		ft_split_piles(piles, temp, nums);
+		ft_insertion(piles);
 		ft_find_push(piles, temp, 2);
+		free(nums);
 	}
 	else
-		piles->moves = 70;
+		piles->moves = 70000;
 }
