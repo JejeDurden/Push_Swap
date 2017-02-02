@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:50:38 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/02 08:48:44 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 10:29:24 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_struct		*ft_init_temp(t_struct *piles, t_struct *temp)
 	return (temp);
 }
 
-static int			ft_minimum(t_algos *algos)
+static void			ft_minimum(t_algos *algos, t_struct *piles)
 {
 	int		val;
 
@@ -30,7 +30,12 @@ static int			ft_minimum(t_algos *algos)
 		val = algos->median_sort;
 	if (val > algos->merge_sort)
 		val = algos->merge_sort;
-	return (val);
+	if (val == algos->insertion)
+		ft_insertion(piles);
+	else if (val == algos->merge_sort)
+		ft_merge_sort(piles);
+	else
+		ft_median_sort(piles);
 }
 
 void				ft_push_swap(t_struct *piles)
@@ -40,23 +45,23 @@ void				ft_push_swap(t_struct *piles)
 
 	piles->push_swap = 1;
 	algos = ft_memalloc(sizeof(t_algos));
-	temp = ft_init_struct(piles->sizemax + 1);
+	temp = NULL;
 	temp = ft_init_temp(piles, temp);
 	ft_merge_sort(temp);
 	algos->merge_sort = temp->moves;
+	ft_free_piles(&temp);
+	free(temp);
 	temp = ft_init_temp(piles, temp);
 	ft_median_sort(temp);
 	algos->median_sort = temp->moves;
+	ft_free_piles(&temp);
+	free(temp);
 	temp = ft_init_temp(piles, temp);
 	ft_insertion(temp);
 	algos->insertion = temp->moves;
-	if (ft_minimum(algos) == algos->insertion)
-		ft_insertion(piles);
-	else if (ft_minimum(algos) == algos->merge_sort)
-		ft_merge_sort(piles);
-	else
-		ft_median_sort(piles);
 	ft_free_piles(&temp);
+	free(temp);
+	ft_minimum(algos, piles);
 	free(algos);
 }
 
@@ -83,7 +88,5 @@ int					main(int argc, char **argv)
 		return (-1);
 	}
 	ft_push_swap(piles);
-	if (piles)
-		ft_free_piles(&piles);
 	return (0);
 }

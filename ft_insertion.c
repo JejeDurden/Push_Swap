@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 15:36:46 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/28 20:06:17 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 09:49:10 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_insertion(t_struct *piles)
 	while (ft_is_sorted(piles->a, piles->size_a) == 0)
 	{
 		first_bug = ft_get_first_bug(piles->a, piles->size_a);
-		if (first_bug > piles->size_a / 2)
+		if (first_bug > (piles->size_a + 1) / 2)
 		{
 			i = piles->size_a - first_bug;
 			while (i-- >= 0)

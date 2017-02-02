@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:25:27 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/02 09:12:28 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 10:07:04 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void			ft_median_sort(t_struct *piles)
 		ft_insertion(piles);
 		ft_find_push(piles, temp, 2);
 		free(nums);
+		ft_free_piles(&temp);
+		free(temp);
 	}
 	else
 		piles->moves = 70000;
