@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 18:31:28 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 17:11:33 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 09:43:09 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		main(int argc, char **argv)
 	piles->error = 0;
 	if (argc < 2)
 		return (0);
-	while (i++ < argc)
+	while (++i < argc)
 	{
 		if (ft_valid_num(argv[i], argv, argc) == 1 &&
 									ft_valid_int(argv[i]) == 1)
