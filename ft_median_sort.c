@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:25:27 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/02 10:07:04 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 16:19:57 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ static int		ft_closest(int *tab, int size, int n1, int n2)
 	}
 	i = tab[i];
 	val1 = moves;
-	moves = 0;
+	moves = 1;
 	while (tab[size] != n1 && tab[size] != n2)
 	{
 		size--;
 		moves++;
 	}
-	return ((val1 >= moves + 1) ? tab[size] : i);
+	return ((val1 >= moves) ? tab[size] : i);
 }
 
 static void		ft_find_push(t_struct *piles, t_struct *temp, int up_pos)
@@ -70,8 +70,8 @@ static void		ft_find_push(t_struct *piles, t_struct *temp, int up_pos)
 	{
 		down = temp->a[(temp->size_a - 1) / 2 - down_pos];
 		up = temp->a[(temp->size_a - 1) / 2 + up_pos];
-		if (ft_closest(piles->b, piles->size_b, down, up)
-				== down && down_pos <= temp->size_a - 1)
+		if (ft_closest(piles->b, piles->size_b - 1, down, up)
+				== down && down_pos <= temp->size_a)
 		{
 			ft_push_nb(piles, down, ft_find_num_pos(piles->b,
 						down, piles->size_b));
@@ -107,7 +107,7 @@ void			ft_median_sort(t_struct *piles)
 	t_struct	*temp;
 	t_num		*nums;
 
-	if (piles->size_a > 3 && piles->size_a < 120)
+	if (piles->size_a > 3 && piles->size_a < 120 && piles->size_a != 7)
 	{
 		nums = ft_memalloc(sizeof(t_num));
 		temp = ft_init_struct(piles->sizemax + 1);

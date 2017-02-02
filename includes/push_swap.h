@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:54:00 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/02 10:30:22 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 16:12:45 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct		s_num
 	int		med;
 	int		up;
 	int		down;
-	int		up2;
 }					t_num;
 
 int					ft_valid_num(char *argv, char **tabstr, int n);
