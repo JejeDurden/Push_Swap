@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 10:56:42 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/27 10:59:14 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/02 09:27:09 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ int		ft_ismax(int *tab, int size)
 	}
 	return (max);
 }
-
