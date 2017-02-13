@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 10:25:16 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/01 17:10:55 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/11 10:52:19 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			ft_card_sort(t_struct *piles)
 		if (closest == -1000000)
 			closest = ft_ismin(piles->a, piles->size_a);
 		closest_pos = ft_find_num_pos(piles->a, closest, piles->size_a);
-		if (closest_pos > (piles->size_a - 1) / 2)
+		if (closest_pos > (piles->size_a) / 2)
 			while (piles->a[0] != closest)
 				ft_rra(piles);
 		else

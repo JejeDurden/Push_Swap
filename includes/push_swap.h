@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 10:54:00 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/02 16:12:45 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/10 21:09:52 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void				ft_insertion(t_struct *piles);
 void				ft_merge_sort(t_struct *piles);
 void				ft_median_sort(t_struct *piles);
 void				ft_card_sort(t_struct *piles);
-void				ft_free_piles(t_struct **piles);
+void				ft_free_piles(t_struct *piles);
 int					ft_find_num_pos(int *tab, int num, int size);
 void				ft_copy_pile_a(t_struct *temp, t_struct *piles);
 void				ft_split_piles(t_struct *piles, t_struct *temp,

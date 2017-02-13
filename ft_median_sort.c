@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:25:27 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/02 16:19:57 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/11 10:05:21 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		ft_push_nb(t_struct *piles, int nb, int nb_pos)
 {
 	if (nb_pos != -1)
 	{
-		if (nb_pos > (piles->size_b - 1) / 2)
+		if (nb_pos > piles->size_b / 2)
 		{
 			while (piles->b[0] != nb)
 				ft_rrb(piles);
@@ -37,9 +37,9 @@ static int		ft_closest(int *tab, int size, int n1, int n2)
 	int		i;
 	int		val1;
 
-	if (n1 == 0)
+	if (n1 == '\0')
 		return (n2);
-	if (n2 == 0)
+	if (n2 == '\0')
 		return (n1);
 	moves = 0;
 	i = 0;
@@ -66,12 +66,13 @@ static void		ft_find_push(t_struct *piles, t_struct *temp, int up_pos)
 	int		down_pos;
 
 	down_pos = 2;
-	while (piles->size_b > 0)
+	while (ft_is_finished(piles) == 0)
 	{
-		down = temp->a[(temp->size_a - 1) / 2 - down_pos];
-		up = temp->a[(temp->size_a - 1) / 2 + up_pos];
-		if (ft_closest(piles->b, piles->size_b - 1, down, up)
-				== down && down_pos <= temp->size_a)
+		down = (temp->size_a / 2 - down_pos) >= 0 ? temp->a[temp->size_a / 2 -
+			down_pos] : '\0';
+		up = (temp->size_a / 2 + up_pos) < temp->size_a ? temp->a[temp->size_a /
+			2 + up_pos] : '\0';
+		if (ft_closest(piles->b, piles->size_b, down, up) == down)
 		{
 			ft_push_nb(piles, down, ft_find_num_pos(piles->b,
 						down, piles->size_b));
@@ -107,22 +108,22 @@ void			ft_median_sort(t_struct *piles)
 	t_struct	*temp;
 	t_num		*nums;
 
-	if (piles->size_a > 3 && piles->size_a < 120 && piles->size_a != 7)
+	if (piles->size_a == 5 || (piles->size_a > 11 && piles->size_a < 110))
 	{
 		nums = ft_memalloc(sizeof(t_num));
 		temp = ft_init_struct(piles->sizemax + 1);
 		ft_copy_pile_a(temp, piles);
 		ft_sort_temp(temp->a, temp->size_a);
-		nums->med = temp->a[(temp->size_a - 1) / 2];
-		nums->up = temp->a[(temp->size_a - 1) / 2 + 1];
-		nums->down = temp->a[(temp->size_a - 1) / 2 - 1];
+		nums->med = temp->a[(temp->size_a) / 2];
+		nums->up = temp->a[(temp->size_a) / 2 + 1];
+		nums->down = temp->a[(temp->size_a) / 2 - 1];
 		ft_split_piles(piles, temp, nums);
 		ft_insertion(piles);
 		ft_find_push(piles, temp, 2);
 		free(nums);
-		ft_free_piles(&temp);
+		ft_free_piles(temp);
 		free(temp);
 	}
 	else
-		piles->moves = 70000;
+		piles->moves = 1000000;
 }

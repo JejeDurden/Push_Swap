@@ -6,7 +6,7 @@
 /*   By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 11:40:04 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/27 10:57:51 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/06 14:50:22 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					ft_isspace(int c);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				*ft_strdup(const char *s);

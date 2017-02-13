@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:36:09 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/25 17:36:14 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/10 18:45:55 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void		ft_move_down_a(t_struct *piles)
 	int		i;
 
 	i = 0;
-	while (i < piles->size_a)
+	while (i < piles->size_a - 1)
 	{
 		piles->a[i] = piles->a[i + 1];
 		i++;
 	}
+	piles->a[i] = 0;
 	piles->size_a--;
 }
 
@@ -56,10 +57,11 @@ void		ft_move_down_b(t_struct *piles)
 	int		i;
 
 	i = 0;
-	while (i < piles->size_b)
+	while (i < piles->size_b - 1)
 	{
 		piles->b[i] = piles->b[i + 1];
 		i++;
 	}
+	piles->b[i] = 0;
 	piles->size_b--;
 }

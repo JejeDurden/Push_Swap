@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_half_sort.c                                     :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 10:00:47 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/10 20:56:08 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/02/06 10:18:59 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/02/06 10:27:17 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "libft.h"
 
-int		ft_find_num_pos(int *tab, int num, int size)
+int		ft_isspace(int c)
 {
-	int		i;
-
-	i = 0;
-	while (tab[i] != num && i <= size)
-		i++;
-	if (i < size)
-		return (i);
-	else
-		return (-1);
+	return (c == '\t' || c == '\n' || c == '\r' ||
+				c == '\v' || c == '\f' || c == ' ');
 }

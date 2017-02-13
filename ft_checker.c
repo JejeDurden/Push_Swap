@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 18:31:28 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/02 11:39:39 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/10 21:10:15 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		main(int argc, char **argv)
 		return (-1);
 	}
 	ft_checker(piles);
-	ft_free_piles(&piles);
+	ft_free_piles(piles);
 	free(piles);
 	return (0);
 }

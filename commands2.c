@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 14:16:36 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/26 19:17:25 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/10 18:39:42 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_ra(t_struct *piles)
 
 	temp = piles->a[0];
 	i = 0;
-	while (i < piles->size_a)
+	while (i < piles->size_a - 1)
 	{
 		piles->a[i] = piles->a[i + 1];
 		i++;
@@ -38,7 +38,7 @@ void	ft_rb(t_struct *piles)
 
 	temp = piles->b[0];
 	i = 0;
-	while (i < piles->size_b)
+	while (i < piles->size_b - 1)
 	{
 		piles->b[i] = piles->b[i + 1];
 		i++;
@@ -57,7 +57,7 @@ void	ft_rr(t_struct *piles)
 
 	temp = piles->a[0];
 	i = 0;
-	while (i < piles->size_a)
+	while (i < piles->size_a - 1)
 	{
 		piles->a[i] = piles->a[i + 1];
 		i++;
@@ -65,7 +65,7 @@ void	ft_rr(t_struct *piles)
 	piles->a[piles->size_a - 1] = temp;
 	temp = piles->b[0];
 	i = 0;
-	while (i < piles->size_b)
+	while (i < piles->size_b - 1)
 	{
 		piles->b[i] = piles->b[i + 1];
 		i++;

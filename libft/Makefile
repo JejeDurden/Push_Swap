@@ -6,7 +6,7 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 17:35:40 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/01/27 10:58:13 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/02/06 10:22:00 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = ft_putchar.c			\
 	  ft_isalpha.c			\
 	  ft_isdigit.c			\
 	  ft_isalnum.c			\
+	  ft_isspace.c			\
 	  ft_isascii.c			\
 	  ft_isprint.c			\
 	  ft_tolower.c			\

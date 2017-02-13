@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:26:32 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/02/02 13:03:42 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/02/10 19:22:03 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void			ft_merge_sort(t_struct *piles)
 	int		n;
 	int		i;
 
-	if (piles->size_a > 4)
+	if (piles->size_a > 10)
 	{
 		while (piles->size_a > piles->sizemax / 2)
 			ft_pb(piles);
@@ -133,5 +133,5 @@ void			ft_merge_sort(t_struct *piles)
 		ft_card_sort(piles);
 	}
 	else
-		piles->moves = 70;
+		piles->moves = 100000;
 }
